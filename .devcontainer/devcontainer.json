@@ -1,0 +1,7 @@
+{
+	"name": "learn-nestjs",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+  "remoteUser": "node"
+}
