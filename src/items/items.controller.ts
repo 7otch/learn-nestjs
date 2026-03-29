@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import type { Item } from './items.model';
 
@@ -10,6 +10,11 @@ export class ItemsController {
   @Get()
   findAll(): Item[] {
     return this.itemsService.findAll();
+  }
+
+  @Get(':id')
+  findById(@Param('id') id: string): Item {
+    return this.itemsService.findById(id);
   }
 
   @Post()
@@ -27,5 +32,10 @@ export class ItemsController {
       status: 'ON_SALE'
     }
     return this.itemsService.create(item);
+  }
+
+  @Put(':id')
+  updateStatus(@Param('id') id: string){
+    return this.itemsService.updateStatus(id);
   }
 }
